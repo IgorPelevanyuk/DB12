@@ -71,6 +71,12 @@ def single_dirac_benchmark(iterations_num=1, measured_copies=None, correction=Tr
     if not cput:
         return None
 
+    # Since os.times() is so innacurate (just two numbers after comma) we introduce small randomization.
+    # More on that here: https://github.com/DIRACGrid/DB12/issues/15
+    random_factor = 0.01 * random.random() - 0.005
+    cput = cput + random_factor
+    wall = wall + random_factor
+
     norm = calib * iterations_num / cput
     if correction:
         norm = get_norm_correction(norm)
