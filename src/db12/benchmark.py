@@ -194,11 +194,9 @@ def get_norm_correction(norm_computed):
     """
     # If python2 is used, then no action is needed
     if sys.version_info[0] < 3:
-        return norm_computed
-
-    logging.warning(
-        "You are executing DB12 using python3, DB12 score is generally higher than it was with python2"
-    )
+        logging.warning(
+            "You are executing DB12 using python2, DB12 score is generally lower than it would be with python3"
+        )
     logging.warning("Trying to apply a correction...")
 
     # Get the dictionary of factors
