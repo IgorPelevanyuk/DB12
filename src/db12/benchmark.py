@@ -27,8 +27,9 @@ def single_dirac_benchmark(iterations_num=1, measured_copies=None, correction=Tr
     # pylint: disable = too-many-locals
     # This number of iterations corresponds to 1kHS2k.seconds, i.e. 250 HS06 seconds
 
-    iters = int(1000 * 1000 * 12.5)
-    calib = 250.0
+    complexity = 2.0 # This parameter multiplies amount of work that benchmark have to do
+    iters = int(1000 * 1000 * 12.5 * complexity)
+    calib = 250.0 * complexity
     m_1 = int(0)
     m_2 = int(0)
     if sys.version_info[0] < 3:
